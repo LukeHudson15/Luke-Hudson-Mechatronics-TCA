@@ -1,0 +1,60 @@
+//C++
+//
+//Library inclusions
+#include <Wire.h>
+#include <Adafruit_LiquidCrystal.h>
+//Create the LCD
+Adafruit_LiquidCrystal lcd(0);
+
+//Create constants for Ultrasonic sensor
+const int pingPin = 7;
+const int echopin = 6;
+
+void setup()
+{
+  //sets trigger pin as an output
+pinMode (pingPin, OUTPUT);
+ 
+lcd.begin(16, 2);
+
+lcd.setBacklight(1);
+//generates a starting squence as an added extra
+lcd.print("Starting...");
+delay(1000);
+}
+
+void loop()
+{
+  //store variables for distance and travel time
+long duration;
+float distance;
+
+pinMode(pingPin, OUTPUT);
+
+digitalWrite(pingPin, LOW);
+delayMicroseconds(5);
+
+digitalWrite(pingPin, HIGH);
+delayMicroseconds(10);
+
+digitalWrite(pingPin, LOW);
+
+pinMode(pingPin, INPUT);
+//measures return time of echo
+duration = pulseIn(echopin, HIGH);
+//converts travel time into distance
+distance = duration * 0.0343 / 2.0;
+
+
+lcd.clear();
+//prints distances 
+lcd.setCursor(0,0);
+lcd.print("Distance:");
+
+lcd.setCursor(0,1);
+lcd.print ( "    ");
+ lcd.setCursor(0,1);
+lcd.print(distance, 1);
+lcd.print(" cm");
+
+delay(500)
