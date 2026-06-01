@@ -1,0 +1,41 @@
+//C++
+//
+
+#include <Adafruit_LiquidCrystal.h>
+
+Adafruit_LiquidCrystal lcd(0);
+
+const int potPin = A0;
+// resistor used
+const float R = 220.0;
+
+void setup()
+{
+lcd.begin(16,2);
+lcd.setBacklight(1);
+}
+
+void loop()
+{
+int adcValue = analogRead(potPin);
+//converts to voltage
+float voltage = adcValue * 5.0 / 1023.0;
+//calculates using ohms law
+float current = voltage / R;
+//converts to mA
+current = current * 1000;
+
+lcd.clear();
+//prints current and voltage
+lcd.setCursor(0,0);
+lcd.print("V=");
+lcd.print(voltage,2);
+lcd.print("V");
+
+lcd.setCursor(0,1);
+lcd.print("I=");
+lcd.print(current,1);
+lcd.print("mA");
+
+delay(500);
+}
