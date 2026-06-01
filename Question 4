@@ -1,0 +1,62 @@
+// C++ code
+//
+//LED colour set up
+const int red = 11;
+const int green = 9;
+const int blue = 10;
+
+void setup()
+{
+  pinMode(red, OUTPUT);
+  pinMode(green, OUTPUT);
+  pinMode(blue, OUTPUT);
+}
+
+void loop()
+{
+  //red
+  analogWrite(red,255);
+  analogWrite(green,0);
+  analogWrite(blue,0);
+  delay(500);
+  //orange
+  analogWrite(red,255);
+  analogWrite(green,100);
+  analogWrite(blue,0);
+  delay(500);
+  //yellow
+  analogWrite(red,255);
+  analogWrite(green,255);
+  analogWrite(blue,0);
+  delay(500);
+  //green
+  analogWrite(red,0);
+  analogWrite(green,255);
+  analogWrite(blue,0);
+  delay(500);
+  //Turquoise
+  analogWrite(red,0);
+  analogWrite(green,206);
+  analogWrite(blue,209);
+  delay(500);
+  //blue
+  analogWrite(red,0);
+  analogWrite(green,0);
+  analogWrite(blue,255);
+  delay(500);
+  //indigo
+  analogWrite(red,75);
+  analogWrite(green,0);
+  analogWrite(blue,130);
+  delay(500);
+  //violet
+  analogWrite(red,148);
+  analogWrite(green,0);
+  analogWrite(blue,211);
+  delay(500);
+  //pink
+  analogWrite(red,238);
+  analogWrite(green,130);
+  analogWrite(blue,238);
+  delay(500);
+}
